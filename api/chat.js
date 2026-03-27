@@ -1,15 +1,12 @@
 module.exports = async (req, res) => {
-  // ✅ FIX CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // ✅ Handle preflight request
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
 
-  // ✅ Handle GET (browser test)
   if (req.method !== "POST") {
     return res.status(200).json({
       ok: true,
@@ -52,9 +49,9 @@ Do not diagnose or give medical advice.`
     return res.status(200).json(data);
 
   } catch (error) {
-  return res.status(500).json({
-    ok: false,
-    error: error.message,
-    full: error
-  });
-}
+    return res.status(500).json({
+      ok: false,
+      error: error.message
+    });
+  }
+};
