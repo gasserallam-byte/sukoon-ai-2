@@ -48,10 +48,9 @@ Possible recommendations:
     const data = await response.json();
     return res.status(200).json(data);
   } catch (error) {
-    return res.status(500).json({
-      ok: false,
-      error: "Server error",
-      details: error.message
-    });
-  }
-};
+  return res.status(500).json({
+    ok: false,
+    error: error.message,
+    stack: error.stack
+  });
+}
