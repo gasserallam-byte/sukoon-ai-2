@@ -52,9 +52,9 @@ Do not diagnose or give medical advice.`
     return res.status(200).json(data);
 
   } catch (error) {
-    return res.status(500).json({
-      ok: false,
-      error: error.message
-    });
-  }
-};
+  return res.status(500).json({
+    ok: false,
+    error: error.message,
+    full: error
+  });
+}
