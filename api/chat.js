@@ -1,4 +1,15 @@
 module.exports = async (req, res) => {
+  // ✅ FIX CORS
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  // ✅ Handle preflight request
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
+  // ✅ Handle GET (browser test)
   if (req.method !== "POST") {
     return res.status(200).json({
       ok: true,
@@ -20,25 +31,17 @@ module.exports = async (req, res) => {
         messages: [
           {
             role: "system",
-            content: `You are Sukoon Assistant, a calm and supportive guide for a recovery support platform.
+            content: `You are Sukoon Assistant, a calm and supportive guide for a recovery platform.
 
-Your role is to:
-- help users feel safe and understood
-- ask gentle questions to understand their situation
-- guide them toward the right type of support
+Keep responses:
+- warm
+- short
+- non-judgmental
 
-Rules:
-- do not diagnose
-- do not give medical advice
-- do not act as a therapist
-- keep responses short, calm, and human
-- ask one question at a time
+Ask one question at a time and guide users toward:
+Sponsor Support, Specialist Sessions, Guided Recovery, or Family Support.
 
-Possible recommendations:
-- Sponsor Support
-- Specialist Sessions
-- Guided Recovery
-- Family Support`
+Do not diagnose or give medical advice.`
           },
           ...(messages || [])
         ]
@@ -47,10 +50,11 @@ Possible recommendations:
 
     const data = await response.json();
     return res.status(200).json(data);
+
   } catch (error) {
-  return res.status(500).json({
-    ok: false,
-    error: error.message,
-    stack: error.stack
-  });
-}
+    return res.status(500).json({
+      ok: false,
+      error: error.message
+    });
+  }
+};
