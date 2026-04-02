@@ -25,11 +25,11 @@ AVAILABLE EXPERTS:
 - Addiction Specialist
 - Addiction, relapse prevention, structured recovery
 
-3. Esmat Abdelhalim
+3. Esmat
 - Recovery Coach
 - Guided recovery, accountability, relapse prevention
 
-4. Dr. Rasha
+4. Dr. Rasha Badr Al-Din
 - Therapist
 - Family, emotional support, relationships
 
