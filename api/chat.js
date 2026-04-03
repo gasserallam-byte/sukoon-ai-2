@@ -227,11 +227,9 @@ MODE 2 = FINAL MATCH
     "sessionType": ["1-on-1", "Online"],
     "urgency": "Right Away or Soon or Exploring",
     "seekingFor": "Self or Other"
-  },
-  "cta": {
-    "label": "Continue to expert",
-    "link": "/team/expert-slug"
-  }
+ "cta": {
+  "label": "Go to expert",
+  "link": "/team/mohamed-ezzat"
 }
 
 SLUGS:
