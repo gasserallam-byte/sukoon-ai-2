@@ -1,0 +1,5 @@
+import { currentCart } from 'wix-ecom-backend';
+
+export async function createCheckoutFromCart() {
+  return await currentCart.createCheckoutFromCurrentCart();
+}
